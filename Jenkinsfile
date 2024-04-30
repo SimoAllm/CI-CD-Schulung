@@ -19,20 +19,15 @@ pipeline {
 
         stage('Schreibe Datei') {
             steps {
-                script {
-                    writeFile file: 'meineDatei.txt', text: 'Hallo Jenkins!'
-                    stash includes: 'meineDatei.txt', name: 'meineDatei'
-                }
+                writeFile file: 'meineDatei.txt', text: 'Hallo, Jenkins!'
+                stash includes: 'meineDatei.txt', name: 'meineDatei'
             }
         }
 
         stage('Lese Datei') {
             steps {
-                script {
-                    unstash 'meineDatei'
-                    def meineDateiInhalt = readFile 'meineDatei.txt'
-                    echo "Inhalt der Datei: ${meineDateiInhalt}"
-                }
+                unstash 'meineDatei'
+                echo readFile('meineDatei.txt')
             }
         }
     }
