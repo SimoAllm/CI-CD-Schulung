@@ -1,30 +1,29 @@
-
 pipeline
 {
-	agent any
-	
+    agent any
+
     options
     {
-		timeout(time: 1, units: ‘MINUTES’)
-	}
+        timeout(time: 1, unit: 'MINUTES')
+    }
 
-	environment
+    environment
     {
-		var1 = "Hugo"
-		var2 = 42
-	}
+        var1 = "Hugo"
+        var2 = "42"
+    }
 
-	stages
+    stages
     {
-		stage(‘stage1’)
+        stage('stage1')
         {
             steps
             {
-                step
+                script
                 {
-                    echo “Var1 hat den Wert ${var1}”
+                    echo "Var1 hat den Wert ${env.var1}"
                 }
             }
         }
-	}
+    }
 }
