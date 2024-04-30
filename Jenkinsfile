@@ -1,24 +1,18 @@
-pipeline
-{
+pipeline {
     agent any
 
-    options
-    {
+    options {
         timeout(time: 1, unit: 'MINUTES')
     }
 
-    environment
-    {
+    environment {
         var1 = 'Hugo'
         var2 = '42'
     }
 
-    stages
-    {
-        stage('stage1')
-        {
-            steps
-            {
+    stages {
+        stage('stage1') {
+            steps {
                 echo "Var1 hat den Wert ${env.var1}"
             }
         }
