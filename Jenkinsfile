@@ -51,6 +51,7 @@ pipeline {
             steps {
                 script {
                     unstash 'meineZweiteDatei'
+                    echo readFile('meineZweiteDatei.txt')
                     env.varFileContents = readFile('meineZweiteDatei.txt')
                     echo "Inhalt der Datei mit dynamischem Inhalt: ${env.varFileContents}"
                 }
