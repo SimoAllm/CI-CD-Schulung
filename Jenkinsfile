@@ -10,7 +10,7 @@ pipeline
 
 	environment
     {
-		var1 = ‘Hugo’
+		var1 = "Hugo"
 		var2 = 42
 	}
 
