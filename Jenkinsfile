@@ -13,7 +13,9 @@ pipeline {
 
     stages {
         stage('Check Docker') {
-            sh 'docker -v'
+            steps{
+                sh 'docker -v'
+            }
         }
 
         stage('stage1') {
