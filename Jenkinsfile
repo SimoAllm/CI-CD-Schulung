@@ -8,6 +8,7 @@ pipeline {
     environment {
         var1 = 'Hugo'
         var2 = '42'
+        varFileContents = ''
     }
 
     stages {
@@ -28,6 +29,31 @@ pipeline {
             steps {
                 unstash 'meineDatei'
                 echo readFile('meineDatei.txt')
+            }
+        }
+
+        stage('Schreibe dynamisch berechneten Dateiinhalt') {
+            steps {
+                script {
+                    def text = ''
+
+                    for (int i = 0; i < 10; i++) {
+                        text += 'Hallo, Jenkins! '
+                    }
+
+                    writeFile file: 'meineZweiteDatei.txt', text: text
+                    stash includes: 'meineZweiteDatei.txt', name: 'meineZweiteDatei'
+                }
+            }
+        }
+
+        stage('Lese Datei mit dynamischem Inhalt'){
+            steps {
+                script {
+                    unstash 'meineZweiteDatei'
+                    env.varFileContents = readFile('meineZweiteDatei.txt')
+                    echo "Inhalt der Datei mit dynamischem Inhalt: ${env.varFileContents}"
+                }
             }
         }
     }
