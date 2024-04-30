@@ -9,8 +9,8 @@ pipeline
 
     environment
     {
-        var1 = "Hugo"
-        var2 = "42"
+        var1 = 'Hugo'
+        var2 = '42'
     }
 
     stages
@@ -19,10 +19,7 @@ pipeline
         {
             steps
             {
-                script
-                {
-                    echo "Var1 hat den Wert ${env.var1}"
-                }
+                echo "Var1 hat den Wert ${env.var1}"
             }
         }
     }
