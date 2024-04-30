@@ -35,13 +35,13 @@ pipeline {
         stage('Schreibe dynamisch berechneten Dateiinhalt') {
             steps {
                 script {
-                    def text = ''
+                    def textDyn = ''
 
                     for (int i = 0; i < 10; i++) {
-                        text += 'Hallo, Jenkins! '
+                        textDyn += 'Hallo, Jenkins! '
                     }
 
-                    writeFile file: 'meineZweiteDatei.txt', text: text
+                    writeFile file: 'meineZweiteDatei.txt', text: textDyn
                     stash includes: 'meineZweiteDatei.txt', name: 'meineZweiteDatei'
                 }
             }
