@@ -12,6 +12,10 @@ pipeline {
     }
 
     stages {
+        stage('Check Docker') {
+            sh 'docker -v'
+        }
+
         stage('stage1') {
             steps {
                 echo "Var1 hat den Wert ${env.var1}"
