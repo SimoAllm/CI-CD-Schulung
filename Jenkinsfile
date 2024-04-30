@@ -20,7 +20,10 @@ pipeline
         {
             steps
             {
-                echo “Var1 hat den Wert ${var1}”
+                step
+                {
+                    echo “Var1 hat den Wert ${var1}”
+                }
             }
         }
 	}
