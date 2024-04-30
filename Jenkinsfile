@@ -37,7 +37,7 @@ pipeline {
                 script {
                     def textDyn = ''
 
-                    for (int i = 0; i < 10; i++) {
+                    for (def i = 0; i < 10; i++) {
                         textDyn += 'Hallo, Jenkins! '
                     }
 
@@ -52,7 +52,7 @@ pipeline {
                 script {
                     unstash 'meineZweiteDatei'
                     env.varFileContents = readFile('meineZweiteDatei.txt')
-                    echo "Inhalt der Datei mit dynamischem Inhalt: ${varFileContents}"
+                    echo "Inhalt der Datei mit dynamischem Inhalt: ${env.varFileContents}"
                 }
             }
         }
